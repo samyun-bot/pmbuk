@@ -9,6 +9,7 @@ import threading
 import time
 import random
 from urllib.parse import urlparse
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -426,4 +427,5 @@ if __name__ == '__main__':
     refresh_thread = threading.Thread(target=auto_refresh_cache, daemon=True)
     refresh_thread.start()
 
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
