@@ -1,0 +1,5 @@
+Flask
+beautifulsoup4
+cloudscraper
+flask-cors
+gunicorn

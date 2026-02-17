@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>P M B U K</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a0f;
+            --secondary-bg: #14141f;
+            --card-bg: rgba(25, 25, 40, 0.6);
+            --accent-gold: #d4af37;
+            --accent-amber: #ff9500;
+            --accent-bronze: #cd7f32;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8c8;
+            --border-color: rgba(212, 175, 55, 0.15);
+            --shadow-soft: rgba(0, 0, 0, 0.5);
+            --overlay-gradient: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 149, 0, 0.08) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 149, 0, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .header {
+            position: relative;
+            z-index: 10;
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.95) 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .logo {
+            width: 220px;
+            max-width: 40vw;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .title-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-amber) 50%, var(--accent-bronze) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            animation: shimmer 3s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header-subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 50px 20px 80px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 18px 24px;
+            font-size: 16px;
+            background: rgba(25, 25, 40, 0.8);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-card {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+            touch-action: manipulation;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .video-card:nth-child(1) { animation-delay: 0.1s; }
+        .video-card:nth-child(2) { animation-delay: 0.15s; }
+        .video-card:nth-child(3) { animation-delay: 0.2s; }
+        .video-card:nth-child(4) { animation-delay: 0.25s; }
+        .video-card:nth-child(5) { animation-delay: 0.3s; }
+        .video-card:nth-child(6) { animation-delay: 0.35s; }
+        .video-card:nth-child(n+7) { animation-delay: 0.4s; }
+
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--overlay-gradient);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .video-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--accent-gold);
+            box-shadow:
+                0 25px 50px -12px rgba(212, 175, 55, 0.3),
+                0 0 0 1px rgba(212, 175, 55, 0.15),
+                0 0 60px rgba(212, 175, 55, 0.15);
+        }
+
+        .video-card:hover::before {
+            opacity: 1;
+        }
+
+        .video-card:active {
+            transform: translateY(-8px) scale(1.01);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, #1a1a2e 100%);
+        }
+
+        .video-thumbnail::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, rgba(10, 10, 15, 0.95) 0%, transparent 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+            filter: brightness(1) contrast(1.15);
+        }
+
+        /* УЛУЧШЕННАЯ КНОПКА PLAY */
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.95) 0%, rgba(255, 149, 0, 0.95) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+        }
+
+        .play-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-amber));
+            opacity: 0;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.15);
+                opacity: 0;
+            }
+        }
+
+        .play-icon::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 16px 0 16px 28px;
+            border-color: transparent transparent transparent var(--primary-bg);
+            margin-left: 6px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-card:hover .play-icon {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+            animation: playPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes playPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.15);
+            }
+        }
+
+        /* УЛУЧШЕННАЯ ДЛИТЕЛЬНОСТЬ */
+        .duration {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.95) 0%, rgba(20, 20, 31, 0.95) 100%);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 3;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .duration::before {
+            content: '▶';
+            font-size: 10px;
+            color: var(--accent-gold);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .video-card:hover .duration {
+            border-color: var(--accent-gold);
+            box-shadow:
+                0 8px 24px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .video-info {
+            position: relative;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .video-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-site {
+            font-size: 12px;
+            color: var(--accent-amber);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-site::before {
+            content: '🔗';
+            font-size: 12px;
+        }
+
+        /* ПАГИНАЦИЯ */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 60px;
+            padding: 30px 20px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+        }
+
+        .pagination-btn {
+            padding: 18px 36px;
+            background: linear-gradient(135deg, rgba(25, 25, 40, 0.8) 0%, rgba(30, 30, 45, 0.8) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            touch-action: manipulation;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .pagination-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .pagination-btn:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-amber) 100%);
+            border-color: var(--accent-gold);
+            color: var(--primary-bg);
+            transform: translateY(-4px);
+            box-shadow:
+                0 12px 30px -8px rgba(212, 175, 55, 0.5),
+                0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .pagination-btn:active:not(:disabled) {
+            transform: translateY(-2px);
+        }
+
+        .pagination-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .page-info {
+            padding: 18px 32px;
+            background: linear-gradient(135deg, rgba(25, 25, 40, 0.9) 0%, rgba(30, 30, 45, 0.9) 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            backdrop-filter: blur(15px);
+            box-shadow:
+                0 8px 24px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* МОДАЛЬНОЕ ОКНО */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.97);
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            width: 95%;
+            max-width: 1400px;
+            position: relative;
+            animation: modalSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(50px) scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -70px;
+            right: 0;
+            width: 56px;
+            height: 56px;
+            font-size: 32px;
+            color: var(--text-primary);
+            cursor: pointer;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(255, 149, 0, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(15px);
+            touch-action: manipulation;
+        }
+
+        .close-modal:hover {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-amber) 100%);
+            color: var(--primary-bg);
+            transform: rotate(90deg) scale(1.1);
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        .video-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow:
+                0 25px 50px -12px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(212, 175, 55, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #video-player-container {
+            width: 100%;
+        }
+
+        #video-player-container .loading {
+            min-height: auto;
+            padding: 80px 20px;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .loading-spinner {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 30px;
+            border: 4px solid rgba(212, 175, 55, 0.2);
+            border-top: 4px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            padding: 80px 30px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .error-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        /* СОРТИРОВКА */
+        .sort-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
+        }
+
+        .sort-btn {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, rgba(25, 25, 40, 0.8) 0%, rgba(30, 30, 45, 0.8) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(10px);
+            min-width: 120px;
+        }
+
+        .sort-btn.active {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-amber) 100%);
+            border-color: var(--accent-gold);
+            color: var(--primary-bg);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+        }
+
+        .sort-btn:hover:not(.active) {
+            background: linear-gradient(135deg, rgba(40, 40, 60, 0.9) 0%, rgba(45, 45, 65, 0.9) 100%);
+            border-color: var(--accent-gold);
+        }
+
+        /* ТРЕНДЫ */
+        .trending-section {
+            margin-top: 60px;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-amber));
+            border-radius: 2px;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        /* ОПТИМИЗАЦИЯ ДЛЯ МОБИЛЬНЫХ */
+        @media (max-width: 1200px) {
+            .videos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 18px;
+            }
+
+            .trending-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px 30px;
+            }
+
+            .header h1 {
+                font-size: clamp(2.2rem, 10vw, 3rem);
+            }
+
+            .container {
+                padding: 40px 16px 70px;
+            }
+
+            .search-bar {
+                margin-bottom: 30px;
+            }
+
+            .search-input {
+                padding: 16px 20px;
+                font-size: 15px;
+            }
+
+            .sort-controls {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .sort-btn {
+                padding: 12px 18px;
+                font-size: 14px;
+                min-width: 100px;
+            }
+
+            .videos-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 14px;
+            }
+
+            .trending-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .video-card {
+                border-radius: 18px;
+            }
+
+            .play-icon {
+                width: 75px;
+                height: 75px;
+            }
+
+            .play-icon::after {
+                border-width: 14px 0 14px 24px;
+            }
+
+            .duration {
+                bottom: 14px;
+                right: 14px;
+                padding: 8px 14px;
+                font-size: 13px;
+                border-width: 1.5px;
+            }
+
+            .video-info {
+                padding: 14px;
+            }
+
+            .video-title {
+                font-size: 14px;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-top: 50px;
+                padding: 25px 16px;
+            }
+
+            .pagination-btn {
+                padding: 16px 28px;
+                font-size: 15px;
+                min-width: 120px;
+            }
+
+            .page-info {
+                padding: 16px 28px;
+                font-size: 16px;
+                min-width: 100px;
+            }
+
+            .modal-content {
+                width: 96%;
+            }
+
+            .close-modal {
+                top: -65px;
+                width: 52px;
+                height: 52px;
+                font-size: 28px;
+            }
+
+            .video-player {
+                border-radius: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 35px 16px 25px;
+            }
+
+            .header h1 {
+                font-size: clamp(2rem, 12vw, 2.5rem);
+            }
+
+            .header-subtitle {
+                font-size: 0.85rem;
+                letter-spacing: 0.08em;
+            }
+
+            .container {
+                padding: 30px 12px 60px;
+            }
+
+            .search-input {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+
+            .sort-btn {
+                padding: 10px 16px;
+                font-size: 13px;
+                min-width: 85px;
+            }
+
+            .videos-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .trending-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-card {
+                border-radius: 16px;
+            }
+
+            .play-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .play-icon::after {
+                border-width: 12px 0 12px 20px;
+            }
+
+            .duration {
+                bottom: 12px;
+                right: 12px;
+                padding: 7px 12px;
+                font-size: 12px;
+            }
+
+            .video-info {
+                padding: 16px;
+            }
+
+            .video-title {
+                font-size: 14px;
+                line-height: 1.35;
+            }
+
+            .pagination {
+                gap: 10px;
+                margin-top: 40px;
+            }
+
+            .pagination-btn {
+                padding: 14px 24px;
+                font-size: 14px;
+                min-width: 110px;
+                gap: 8px;
+            }
+
+            .page-info {
+                padding: 14px 24px;
+                font-size: 15px;
+                width: 100%;
+                order: -1;
+            }
+
+            .close-modal {
+                top: -60px;
+                width: 48px;
+                height: 48px;
+                font-size: 26px;
+            }
+        }
+
+        /* УЛУЧШЕННЫЙ СКРОЛЛБАР */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+            border-left: 1px solid var(--border-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--accent-gold) 0%, var(--accent-amber) 50%, var(--accent-bronze) 100%);
+            border-radius: 6px;
+            border: 2px solid var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* SKELETON LOADER */
+        @keyframes skeleton-loading {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .skeleton {
+            background: linear-gradient(
+                90deg,
+                var(--card-bg) 25%,
+                rgba(212, 175, 55, 0.1) 50%,
+                var(--card-bg) 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+        }
+
+        /* TOUCH IMPROVEMENTS */
+        @media (hover: none) and (pointer: coarse) {
+            .video-card:active {
+                transform: scale(0.98);
+            }
+
+            .pagination-btn:active:not(:disabled) {
+                transform: scale(0.96);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-wrap">
+                <img src="/logo.png" alt="PMBUK logo" class="logo">
+            </div>
+            <div class="title-wrap">
+                <p class="header-subtitle">Porno <br> Videos <b/r> </b> </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP BANNER AD - MOBILE PRIORITY -->
+    <div style="text-align: center; padding: 10px 5px; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+        <script async="async" data-cfasync="false" src="https://pl28730082.effectivegatecpm.com/0346af59c334ae0846269c85eb971798/invoke.js"></script>
+        <div id="container-0346af59c334ae0846269c85eb971798"></div>
+    </div>
+
+    <!-- MOBILE AD SECTION -->
+    <script>atOptions={'key':'ef9c0e9652bf39255877bad234f7ff7d','format':'iframe','height':250,'width':300,'params':{}};</script>
+    <script src="https://www.highperformanceformat.com/ef9c0e9652bf39255877bad234f7ff7d/invoke.js"></script>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию видео...">
+        </div>
+
+        <div class="sort-controls">
+            <button class="sort-btn active" data-sort="random">Случайно</button>
+            <button class="sort-btn" data-sort="date">По дате</button>
+            <button class="sort-btn" data-sort="views">По просмотрам</button>
+        </div>
+
+        <div id="videos-container" class="videos-grid">
+            <div class="loading">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Загрузка видео...</div>
+            </div>
+        </div>
+
+        <!-- Трендовые видео -->
+        <div class="trending-section">
+            <h2 class="section-title">Тренды</h2>
+            <div id="trending-container" class="trending-grid">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Загрузка трендов...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="pagination-btn" id="prevBtn" onclick="previousPage()">
+                <span>←</span>
+                <span>Назад</span>
+            </button>
+            <div class="page-info">
+                Стр. <span id="currentPage">1</span>
+            </div>
+            <button class="pagination-btn" id="nextBtn" onclick="nextPage()">
+                <span>Вперёд</span>
+                <span>→</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div id="video-player-container"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = '/api';
+        const PLACEHOLDER_SVG = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 style=%22stop-color:%2314141f%22/%3E%3Cstop offset=%22100%25%22 style=%22stop-color:%230a0a0f%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23bg)%22 width=%22640%22 height=%22360%22/%3E%3Ctext fill=%22%23d4af37%22 font-family=%22Arial%22 font-size=%2228%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E🎬%3C/text%3E%3C/svg%3E';
+        let currentPage = 0;
+        let currentSort = 'random';
+
+        // Lazy loading для изображений
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('skeleton');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+
+        // Поиск видео
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                searchVideos(this.value);
+            }
+        });
+
+        // Сортировка
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentSort = this.dataset.sort;
+                loadVideos(currentPage);
+            });
+        });
+
+        async function loadVideos(page = 0, sort = currentSort) {
+            try {
+                console.log(`Загрузка видео для страницы ${page} с сортировкой ${sort}...`);
+                const response = await fetch(`${API_URL}/videos?page=${page}&sort=${sort}`, { cache: 'no-store' });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(`Получено видео: ${data.total} на странице ${data.page}`);
+
+                if (data.videos.length === 0) {
+                    document.getElementById('videos-container').innerHTML =
+                        '<div class="error"><div class="error-icon">📭</div>Видео не найдены на этой странице.</div>';
+                    return;
+                }
+
+                currentPage = data.page;
+                displayVideos(data.videos);
+                updatePaginationButtons();
+            } catch (error) {
+                console.error('Ошибка загрузки видео:', error);
+                document.getElementById('videos-container').innerHTML =
+                    `<div class="error"><div class="error-icon">⚠️</div>Ошибка загрузки видео<br><small>${error.message}</small></div>`;
+            }
+        }
+
+        async function loadTrending() {
+            try {
+                const response = await fetch(`${API_URL}/trending`, { cache: 'no-store' });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                displayTrending(data.trending_videos);
+            } catch (error) {
+                console.error('Ошибка загрузки трендов:', error);
+                document.getElementById('trending-container').innerHTML =
+                    `<div class="error"><div class="error-icon">⚠️</div>Ошибка загрузки трендов<br><small>${error.message}</small></div>`;
+            }
+        }
+
+        function displayVideos(videos) {
+            const container = document.getElementById('videos-container');
+            container.innerHTML = '';
+
+            videos.forEach((video, index) => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.onclick = () => openVideo(video.id);
+
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img class="skeleton"
+                             data-src="${video.thumbnail || PLACEHOLDER_SVG}"
+                             alt="${escapeHtml(video.title)}"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 style=%22stop-color:%2314141f%22/%3E%3Cstop offset=%22100%25%22 style=%22stop-color:%230a0a0f%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23bg)%22 width=%22640%22 height=%22360%22/%3E%3Ctext fill=%22%23d4af37%22 font-family=%22Arial%22 font-size=%2228%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E🎬%3C/text%3E%3C/svg%3E'">
+                        <div class="play-icon"></div>
+                        <span class="duration">${video.duration}</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${escapeHtml(video.title)}</div>
+                        <div class="video-site">${escapeHtml(video.source_site)}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+
+                // Добавляем lazy loading
+                const img = card.querySelector('img');
+                imageObserver.observe(img);
+            });
+
+            // Плавная прокрутка вверх
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function displayTrending(videos) {
+            const container = document.getElementById('trending-container');
+            container.innerHTML = '';
+
+            videos.slice(0, 6).forEach(video => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.onclick = () => openVideo(video.id);
+
+                card.innerHTML = `
+                    <div class="video-thumbnail">
+                        <img class="skeleton"
+                             data-src="${video.thumbnail || PLACEHOLDER_SVG}"
+                             alt="${escapeHtml(video.title)}"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22640%22 height=%22360%22%3E%3Cdefs%3E%3ClinearGradient id=%22bg%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 style=%22stop-color:%2314141f%22/%3E%3Cstop offset=%22100%25%22 style=%22stop-color:%230a0a0f%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23bg)%22 width=%22640%22 height=%22360%22/%3E%3Ctext fill=%22%23d4af37%22 font-family=%22Arial%22 font-size=%2228%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3E🎬%3C/text%3E%3C/svg%3E'">
+                        <div class="play-icon"></div>
+                        <span class="duration">${video.duration}</span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${escapeHtml(video.title)}</div>
+                        <div class="video-site">${escapeHtml(video.source_site)}</div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+
+                // Добавляем lazy loading
+                const img = card.querySelector('img');
+                imageObserver.observe(img);
+            });
+        }
+
+        function updatePaginationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const pageInfo = document.getElementById('currentPage');
+
+            pageInfo.textContent = currentPage + 1;
+            prevBtn.disabled = currentPage === 0;
+        }
+
+        function nextPage() {
+            loadVideos(currentPage + 1);
+        }
+
+        function previousPage() {
+            if (currentPage > 0) {
+                loadVideos(currentPage - 1);
+            }
+        }
+
+        async function searchVideos(query) {
+            if (!query.trim()) {
+                loadVideos(0);
+                return;
+            }
+
+            try {
+                console.log(`Поиск видео по запросу: ${query}`);
+                const response = await fetch(`${API_URL}/search?q=${encodeURIComponent(query)}`, { cache: 'no-store' });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log(`Найдено ${data.total} видео по запросу "${query}"`);
+
+                if (data.results.length === 0) {
+                    document.getElementById('videos-container').innerHTML =
+                        '<div class="error"><div class="error-icon">🔍</div>Видео по вашему запросу не найдены.</div>';
+                    return;
+                }
+
+                displayVideos(data.results);
+                currentPage = 0;
+                updatePaginationButtons();
+            } catch (error) {
+                console.error('Ошибка поиска:', error);
+                document.getElementById('videos-container').innerHTML =
+                    `<div class="error"><div class="error-icon">⚠️</div>Ошибка поиска<br><small>${error.message}</small></div>`;
+            }
+        }
+
+        async function openVideo(videoId) {
+            const modal = document.getElementById('video-modal');
+            const playerContainer = document.getElementById('video-player-container');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            playerContainer.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Загрузка видео...</div>
+                </div>
+            `;
+
+            try {
+                console.log(`Загрузка видео ID: ${videoId}`);
+                const response = await fetch(`${API_URL}/video/${videoId}`, { cache: 'no-store' });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const videoData = await response.json();
+                console.log('Данные видео:', videoData);
+
+                if (videoData.embed) {
+                    if (videoData.embed.type === 'iframe') {
+                        playerContainer.innerHTML = `
+                            <iframe
+                                class="video-player"
+                                src="${videoData.embed.url}"
+                                frameborder="0"
+                                sandbox="allow-scripts allow-same-origin"
+                                allowfullscreen
+                                referrerpolicy="no-referrer"
+                                allow="autoplay; fullscreen">
+                            </iframe>
+                        `;
+                    } else if (videoData.embed.type === 'video') {
+                        playerContainer.innerHTML = `
+                            <video class="video-player" controls autoplay>
+                                <source src="${videoData.embed.url}" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        `;
+                    }
+                } else {
+                    console.warn('Embed не найден, используем iframe оригинальной страницы');
+                    playerContainer.innerHTML = `
+                        <iframe
+                            class="video-player"
+                            src="${videoData.page_url}"
+                            frameborder="0"
+                            sandbox="allow-scripts allow-same-origin"
+                            allowfullscreen
+                            referrerpolicy="no-referrer"
+                            allow="autoplay; fullscreen">
+                        </iframe>
+                    `;
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                playerContainer.innerHTML = `
+                    <div class="error">
+                        <div class="error-icon">⚠️</div>
+                        Ошибка загрузки видео<br>
+                        <small>${error.message}</small>
+                    </div>
+                `;
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('video-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            document.getElementById('video-player-container').innerHTML = '';
+        }
+
+        document.getElementById('video-modal').onclick = function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        window.onload = () => {
+            loadVideos(0);
+            loadTrending();
+        };
+
+        // Предотвращение двойного тапа для зума на iOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+
+    <script async="async" data-cfasync="false" src="https://pl28730082.effectivegatecpm.com/0346af59c334ae0846269c85eb971798/invoke.js"></script>
+    <div id="container-0346af59c334ae0846269c85eb971798"></div>
+    <script src="https://pl28730097.effectivegatecpm.com/fe/5b/03/fe5b0309701b46a4dcbd6452ba5cd184.js"></script>
+</body>
+</html>

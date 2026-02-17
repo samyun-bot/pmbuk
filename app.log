@@ -1,0 +1,134 @@
+2026-02-10 12:06:56,253 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:06:56,255 - __main__ - INFO - [MainThread] 🚀 Adult Video Aggregator API
+2026-02-10 12:06:56,255 - __main__ - INFO - [MainThread] ⚠️  FOR AUTHORIZED USE ONLY - COMPLY WITH ALL LAWS
+2026-02-10 12:06:56,255 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:06:56,257 - __main__ - INFO - [MainThread] Security features:
+2026-02-10 12:06:56,257 - __main__ - INFO - [MainThread]   - Input validation & sanitization: ENABLED
+2026-02-10 12:06:56,257 - __main__ - INFO - [MainThread]   - Rate limiting: ENABLED
+2026-02-10 12:06:56,257 - __main__ - INFO - [MainThread]   - API key protection: CONFIGURABLE
+2026-02-10 12:06:56,259 - __main__ - INFO - [MainThread]   - XSS protection headers: ENABLED
+2026-02-10 12:06:56,259 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:06:56,259 - __main__ - INFO - [MainThread] Available endpoints:
+2026-02-10 12:06:56,259 - __main__ - INFO - [MainThread]   🌐 Main: http://localhost:5000
+2026-02-10 12:06:56,261 - __main__ - INFO - [MainThread]   📊 Stats: http://localhost:5000/api/stats
+2026-02-10 12:06:56,261 - __main__ - INFO - [MainThread]   🔍 Search: http://localhost:5000/api/search?q=term
+2026-02-10 12:06:56,262 - __main__ - INFO - [MainThread]   🌐 Sites: http://localhost:5000/api/sites
+2026-02-10 12:06:56,263 - __main__ - INFO - [MainThread]   🔥 Trending: http://localhost:5000/api/trending
+2026-02-10 12:06:56,264 - __main__ - INFO - [MainThread]   🔄 Refresh (requires API_KEY env var): http://localhost:5000/api/refresh
+2026-02-10 12:06:56,266 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:06:56,268 - __main__ - INFO - [MainThread] Cache duration: 300s | Refresh interval: 1800s
+2026-02-10 12:06:56,269 - __main__ - INFO - [MainThread] Target sites: 5
+2026-02-10 12:06:56,271 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:06:56,281 - __main__ - INFO - [CacheRefresher] Cache refresh thread started
+2026-02-10 12:06:56,363 - werkzeug - INFO - [MainThread] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.5:5000
+2026-02-10 12:06:56,364 - werkzeug - INFO - [MainThread] [33mPress CTRL+C to quit[0m
+2026-02-10 12:07:32,175 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:07:32,175 - __main__ - INFO - [MainThread] 🚀 Adult Video Aggregator API
+2026-02-10 12:07:32,176 - __main__ - INFO - [MainThread] ⚠️  FOR AUTHORIZED USE ONLY - COMPLY WITH ALL LAWS
+2026-02-10 12:07:32,176 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:07:32,176 - __main__ - INFO - [MainThread] Security features:
+2026-02-10 12:07:32,177 - __main__ - INFO - [MainThread]   - Input validation & sanitization: ENABLED
+2026-02-10 12:07:32,177 - __main__ - INFO - [MainThread]   - Rate limiting: ENABLED
+2026-02-10 12:07:32,177 - __main__ - INFO - [MainThread]   - API key protection: CONFIGURABLE
+2026-02-10 12:07:32,177 - __main__ - INFO - [MainThread]   - XSS protection headers: ENABLED
+2026-02-10 12:07:32,178 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:07:32,178 - __main__ - INFO - [MainThread] Available endpoints:
+2026-02-10 12:07:32,178 - __main__ - INFO - [MainThread]   🌐 Main: http://localhost:5000
+2026-02-10 12:07:32,179 - __main__ - INFO - [MainThread]   📊 Stats: http://localhost:5000/api/stats
+2026-02-10 12:07:32,179 - __main__ - INFO - [MainThread]   🔍 Search: http://localhost:5000/api/search?q=term
+2026-02-10 12:07:32,179 - __main__ - INFO - [MainThread]   🌐 Sites: http://localhost:5000/api/sites
+2026-02-10 12:07:32,180 - __main__ - INFO - [MainThread]   🔥 Trending: http://localhost:5000/api/trending
+2026-02-10 12:07:32,180 - __main__ - INFO - [MainThread]   🔄 Refresh (requires API_KEY env var): http://localhost:5000/api/refresh
+2026-02-10 12:07:32,180 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:07:32,181 - __main__ - INFO - [MainThread] Cache duration: 300s | Refresh interval: 1800s
+2026-02-10 12:07:32,181 - __main__ - INFO - [MainThread] Target sites: 5
+2026-02-10 12:07:32,182 - __main__ - INFO - [MainThread] ============================================================
+2026-02-10 12:07:32,183 - __main__ - INFO - [CacheRefresher] Cache refresh thread started
+2026-02-10 12:07:32,231 - werkzeug - INFO - [MainThread] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.20.10.5:5000
+2026-02-10 12:07:32,231 - werkzeug - INFO - [MainThread] [33mPress CTRL+C to quit[0m
+2026-02-10 12:07:43,068 - werkzeug - INFO - [Thread-2 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:43] "GET / HTTP/1.1" 200 -
+2026-02-10 12:07:43,388 - werkzeug - INFO - [Thread-4 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:43] "[36mGET /logo.png HTTP/1.1[0m" 304 -
+2026-02-10 12:07:43,932 - __main__ - INFO - [Thread-6 (process_request_thread)] Cache miss for page_0_site_0, fetching fresh data
+2026-02-10 12:07:43,932 - __main__ - INFO - [Thread-6 (process_request_thread)] Fetching Main Site page 0 from https://www.xv-ru.com/?k=sissy&sort=random&typef=gay&p=0
+2026-02-10 12:07:45,136 - __main__ - INFO - [Thread-6 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:07:45,140 - __main__ - WARNING - [Thread-6 (process_request_thread)] Attempt 1 failed: name 'video_' is not defined
+2026-02-10 12:07:47,262 - __main__ - INFO - [Thread-6 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:07:47,262 - __main__ - WARNING - [Thread-6 (process_request_thread)] Attempt 2 failed: name 'video_' is not defined
+2026-02-10 12:07:50,012 - __main__ - INFO - [Thread-6 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:07:50,012 - __main__ - WARNING - [Thread-6 (process_request_thread)] Attempt 3 failed: name 'video_' is not defined
+2026-02-10 12:07:50,016 - __main__ - ERROR - [Thread-6 (process_request_thread)] Failed to parse Main Site page 0: name 'video_' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Nemesis\Desktop\porn\app.py", line 255, in parse_main_page
+    if video_:
+       ^^^^^^
+NameError: name 'video_' is not defined. Did you mean: 'videos'?
+2026-02-10 12:07:50,016 - werkzeug - INFO - [Thread-6 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:50] "GET /api/videos?page=0&sort=random HTTP/1.1" 200 -
+2026-02-10 12:07:50,020 - werkzeug - INFO - [Thread-7 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:50] "GET /api/trending HTTP/1.1" 200 -
+2026-02-10 12:07:52,592 - werkzeug - INFO - [Thread-10 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:52] "GET / HTTP/1.1" 200 -
+2026-02-10 12:07:52,778 - __main__ - INFO - [Thread-12 (process_request_thread)] Cache miss for page_0_site_0, fetching fresh data
+2026-02-10 12:07:52,778 - __main__ - INFO - [Thread-12 (process_request_thread)] Fetching Main Site page 0 from https://www.xv-ru.com/?k=sissy&sort=random&typef=gay&p=0
+2026-02-10 12:07:53,050 - __main__ - INFO - [Thread-12 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:07:53,051 - __main__ - WARNING - [Thread-12 (process_request_thread)] Attempt 1 failed: name 'video_' is not defined
+2026-02-10 12:07:55,075 - __main__ - INFO - [Thread-12 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:07:55,075 - __main__ - WARNING - [Thread-12 (process_request_thread)] Attempt 2 failed: name 'video_' is not defined
+2026-02-10 12:07:57,711 - __main__ - INFO - [Thread-12 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:07:57,711 - __main__ - WARNING - [Thread-12 (process_request_thread)] Attempt 3 failed: name 'video_' is not defined
+2026-02-10 12:07:57,711 - __main__ - ERROR - [Thread-12 (process_request_thread)] Failed to parse Main Site page 0: name 'video_' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Nemesis\Desktop\porn\app.py", line 255, in parse_main_page
+    if video_:
+       ^^^^^^
+NameError: name 'video_' is not defined. Did you mean: 'videos'?
+2026-02-10 12:07:57,715 - werkzeug - INFO - [Thread-12 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:57] "GET /api/videos?page=0&sort=random HTTP/1.1" 200 -
+2026-02-10 12:07:57,715 - werkzeug - INFO - [Thread-14 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:07:57] "GET /api/trending HTTP/1.1" 200 -
+2026-02-10 12:08:00,737 - __main__ - INFO - [Thread-15 (process_request_thread)] Cache miss for page_1_site_0, fetching fresh data
+2026-02-10 12:08:00,740 - __main__ - INFO - [Thread-15 (process_request_thread)] Fetching Main Site page 1 from https://www.xv-ru.com/?k=sissy&sort=random&typef=gay&p=1
+2026-02-10 12:08:00,987 - __main__ - INFO - [Thread-15 (process_request_thread)] Found 27 video blocks on Main Site page 1
+2026-02-10 12:08:00,987 - __main__ - WARNING - [Thread-15 (process_request_thread)] Attempt 1 failed: name 'video_' is not defined
+2026-02-10 12:08:03,087 - __main__ - INFO - [Thread-15 (process_request_thread)] Found 26 video blocks on Main Site page 1
+2026-02-10 12:08:03,091 - __main__ - WARNING - [Thread-15 (process_request_thread)] Attempt 2 failed: name 'video_' is not defined
+2026-02-10 12:08:04,823 - __main__ - INFO - [Thread-15 (process_request_thread)] Found 27 video blocks on Main Site page 1
+2026-02-10 12:08:04,825 - __main__ - WARNING - [Thread-15 (process_request_thread)] Attempt 3 failed: name 'video_' is not defined
+2026-02-10 12:08:04,826 - __main__ - ERROR - [Thread-15 (process_request_thread)] Failed to parse Main Site page 1: name 'video_' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Nemesis\Desktop\porn\app.py", line 255, in parse_main_page
+    if video_:
+       ^^^^^^
+NameError: name 'video_' is not defined. Did you mean: 'videos'?
+2026-02-10 12:08:04,830 - werkzeug - INFO - [Thread-15 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:08:04] "GET /api/videos?page=1&sort=random HTTP/1.1" 200 -
+2026-02-10 12:08:04,830 - __main__ - INFO - [Thread-17 (process_request_thread)] Cache miss for page_0_site_0, fetching fresh data
+2026-02-10 12:08:04,837 - __main__ - INFO - [Thread-17 (process_request_thread)] Fetching Main Site page 0 from https://www.xv-ru.com/?k=sissy&sort=random&typef=gay&p=0
+2026-02-10 12:08:05,106 - __main__ - INFO - [Thread-17 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:08:05,106 - __main__ - WARNING - [Thread-17 (process_request_thread)] Attempt 1 failed: name 'video_' is not defined
+2026-02-10 12:08:07,084 - __main__ - INFO - [Thread-17 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:08:07,084 - __main__ - WARNING - [Thread-17 (process_request_thread)] Attempt 2 failed: name 'video_' is not defined
+2026-02-10 12:08:09,526 - __main__ - INFO - [Thread-17 (process_request_thread)] Found 26 video blocks on Main Site page 0
+2026-02-10 12:08:09,526 - __main__ - WARNING - [Thread-17 (process_request_thread)] Attempt 3 failed: name 'video_' is not defined
+2026-02-10 12:08:09,526 - __main__ - ERROR - [Thread-17 (process_request_thread)] Failed to parse Main Site page 0: name 'video_' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Nemesis\Desktop\porn\app.py", line 255, in parse_main_page
+    if video_:
+       ^^^^^^
+NameError: name 'video_' is not defined. Did you mean: 'videos'?
+2026-02-10 12:08:09,533 - werkzeug - INFO - [Thread-17 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:08:09] "GET /api/videos?page=0&sort=date HTTP/1.1" 200 -
+2026-02-10 12:08:21,854 - werkzeug - INFO - [Thread-19 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:08:21] "GET / HTTP/1.1" 200 -
+2026-02-10 12:08:22,070 - __main__ - INFO - [Thread-21 (process_request_thread)] Cache miss for page_0_site_0, fetching fresh data
+2026-02-10 12:08:22,073 - __main__ - INFO - [Thread-21 (process_request_thread)] Fetching Main Site page 0 from https://www.xv-ru.com/?k=sissy&sort=random&typef=gay&p=0
+2026-02-10 12:08:22,404 - __main__ - INFO - [Thread-21 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:08:22,404 - __main__ - WARNING - [Thread-21 (process_request_thread)] Attempt 1 failed: name 'video_' is not defined
+2026-02-10 12:08:23,890 - __main__ - INFO - [Thread-21 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:08:23,890 - __main__ - WARNING - [Thread-21 (process_request_thread)] Attempt 2 failed: name 'video_' is not defined
+2026-02-10 12:08:25,497 - __main__ - INFO - [Thread-21 (process_request_thread)] Found 27 video blocks on Main Site page 0
+2026-02-10 12:08:25,497 - __main__ - WARNING - [Thread-21 (process_request_thread)] Attempt 3 failed: name 'video_' is not defined
+2026-02-10 12:08:25,497 - __main__ - ERROR - [Thread-21 (process_request_thread)] Failed to parse Main Site page 0: name 'video_' is not defined
+Traceback (most recent call last):
+  File "C:\Users\Nemesis\Desktop\porn\app.py", line 255, in parse_main_page
+NameError: name 'video_' is not defined. Did you mean: 'videos'?
+2026-02-10 12:08:25,505 - werkzeug - INFO - [Thread-21 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:08:25] "GET /api/videos?page=0&sort=random HTTP/1.1" 200 -
+2026-02-10 12:08:25,505 - werkzeug - INFO - [Thread-23 (process_request_thread)] 127.0.0.1 - - [10/Feb/2026 12:08:25] "GET /api/trending HTTP/1.1" 200 -
